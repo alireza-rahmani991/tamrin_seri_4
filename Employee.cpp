@@ -93,6 +93,9 @@ istream &operator>>(istream& strm, Employee& obj) {
 
 //overloading assignment operator
 Employee& Employee::operator=(const Employee &other){
+    if(this == &other){
+        return *this;
+    }
     this->name = other.name;
     this->id = other.id;
     this->address = other.address;
