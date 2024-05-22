@@ -14,7 +14,7 @@ Person::Person() {
 // 3 argument constructor to create an object with given info
 Person::Person(const string& name,const string& id,const Address& address) {
     if(!validate(id)){
-        cout<<"invalid id";
+        cout<<"invalid id"<<endl;
         exit(0);
     }
     this->name = name;
@@ -47,7 +47,7 @@ void Person::setId(const string& id) {
         this->id = id;
     }
     else {
-        cout<<"invalid id";
+        cout<<"invalid id"<<endl;
     }
 }
 
@@ -63,7 +63,7 @@ void Person::setAddress(const Address& address) {
 //overloading << operator so it outputs all the data
 ostream& operator<<(ostream& strm, const Person& obj) {
 
-    strm<<"name: "<<obj.name<<"\t id: "<<obj.id<<"\t address: "<<obj.address;
+    strm<<"name: "<<obj.name<<"\t id: "<<obj.id<<"\t address: "<<obj.address<<endl;
 
     return strm;
 }
@@ -71,6 +71,10 @@ ostream& operator<<(ostream& strm, const Person& obj) {
 //overloading >> operator to get data from user and set it to the object
 istream& operator >>(istream& strm, Person& obj) {
     strm>>obj.name>>obj.id>>obj.address;
+    while(obj.validate(obj.id)){
+        cout<<"invalid id please enter id again"<<endl;
+        strm>>obj.id;
+    }
     return strm;
 }
 

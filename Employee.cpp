@@ -20,7 +20,7 @@ Employee::Employee(){
 Employee::Employee(const string& name,const string& id, const Address& address, int hourWork, int salaryPerHour
         , int workToDo, int workDone){
     if(!validate(id)){
-        cout<<"invalid id";
+        cout<<"invalid id"<<endl;
         exit(0);
     }
     this->name = name;
@@ -80,7 +80,7 @@ void Employee::setWorkDone(int workDone) {
 ostream& operator<<(ostream& strm, const Employee& employee) {
     strm << "name: " << employee.name << " id: " << employee.id << " address: " << employee.address << " hourWork: "
          << employee.hourWork << " salaryPerHour: " << employee.salaryPerHour << " workToDo: " << employee.workToDo
-         << " workDone: " << employee.workDone;
+         << " workDone: " << employee.workDone<<endl;
     return strm;
 }
 
@@ -88,6 +88,10 @@ ostream& operator<<(ostream& strm, const Employee& employee) {
 //overloading >> operator to get data from user and set it to the object
 istream &operator>>(istream& strm, Employee& obj) {
     strm>>obj.name>>obj.id>>obj.address>>obj.hourWork>>obj.salaryPerHour>>obj.workToDo>>obj.workDone;
+    while(!obj.validate(obj.id)){
+        cout<<"invalid id please enter id again"<<endl;
+        strm>>obj.id;
+    }
     return strm;
 }
 
