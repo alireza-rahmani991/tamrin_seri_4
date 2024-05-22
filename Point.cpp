@@ -31,8 +31,10 @@ Point operator-(const Point &point1, const Point &point2) {
 
 //overloading /= operator to divide x and y of the object by a int and return the new point
 Point& Point::operator/=(int num) {
+    //checks if divided by zero returns itself and outputs an error
     if (num == 0){
-        throw invalid_argument("cannot divide the point by 0");
+        cout<<"ERROR:cannot divide the point by 0";
+        return *this;
     }
     x /= num;
     y /= num;
