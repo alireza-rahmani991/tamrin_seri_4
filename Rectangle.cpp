@@ -85,8 +85,20 @@ Rectangle operator/(const Rectangle &rectangle1, const Rectangle &rectangle2) {
     int newX = (rectangle1.startPoint.getX() + rectangle2.startPoint.getX()) / 2;
     int newY = (rectangle1.startPoint.getY() + rectangle2.startPoint.getY()) / 2;
     Point newPoint(newX, newY);
-    int newWidth = rectangle1.width / rectangle2.width;
-    int newHeight = rectangle1.height / rectangle2.height;
+    int newWidth;
+    if(rectangle1.width >= rectangle2.width){
+        newWidth = rectangle1.width / rectangle2.width;
+    }
+    else{
+        newWidth = rectangle2.width / rectangle1.width;
+    }
+    int newHeight;
+    if(rectangle1.height >= rectangle2.height){
+        newWidth = rectangle1.height / rectangle2.height;
+    }
+    else{
+        newWidth = rectangle2.height / rectangle1.height;
+    }
     return Rectangle (newPoint, newWidth, newHeight);
 
 }
